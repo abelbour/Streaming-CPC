@@ -53,12 +53,42 @@
 </div>
   
 <script>
+var newBaseIpAddress = ""
+function loadData() {
+  var textFileUrl = "ipaddress.txt"; // Hardcoded URL of the text file
+  var xhr = new XMLHttpRequest();
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var data = xhr.responseText;
+        console.log("Data loaded successfully:", data);
+        // Do something with the loaded data, like assign it to a variable
+        processData(data);
+      } else {
+        console.error("Failed to load data:", xhr.status);
+      }
+    }
+  };
+  
+  xhr.open("GET", textFileUrl, true);
+  xhr.send();
+}
+
+function processData(data) {
+  // Here you can process the loaded data
+  console.log("Processing data:", data);
+  // For example, assign it to a variable
+  newBaseIpAddress = data;
+}
 // Function to update the base IP address
 function replaceSubstring(originalString, substringToFind, replacementSubstring) {
   return originalString.split(substringToFind).join(replacementSubstring);
 };
+
 function updateBaseIpAddress() {
-  var newBaseIpAddress = "192.168.1.201"
+  loadData()
+  
 
   var urlListItems = document.querySelectorAll("#urlList li a");
   urlListItems.forEach(function(item) {
