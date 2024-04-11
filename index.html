@@ -11,21 +11,26 @@
 
 <ul id="urlList">
   <!-- Static list of URLs -->
-  <li>http://192.168.1.1/page1.html</li>
-  <li>http://192.168.1.1/page2.html</li>
-  <li>http://192.168.1.1/page3.html</li>
-  <li>http://192.168.1.1/page4.html</li>
-  <li>http://192.168.1.1/page5.html</li>
+  <li><a href="http://IPADDRESS:8888/mystream">HLS</a></li>
+  <li><a href="http://192.168.1.1/page2.html">Page 2</a></li>
+  <li><a href="http://192.168.1.1/page3.html">Page 3</a></li>
+  <li><a href="http://192.168.1.1/page4.html">Page 4</a></li>
+  <li><a href="http://192.168.1.1/page5.html">Page 5</a></li>
 </ul>
 
 <script>
 // Function to update the base IP address
+function replaceSubstring(originalString, substringToFind, replacementSubstring) {
+  return originalString.split(substringToFind).join(replacementSubstring);
+}
 function updateBaseIpAddress() {
   var newBaseIpAddress = "192.168.1.201"
 
-  var urlListItems = document.querySelectorAll("#urlList li");
+  var urlListItems = document.querySelectorAll("#urlList li a");
   urlListItems.forEach(function(item) {
-    item.textContent = "http://" + newBaseIpAddress + item.textContent.substr(item.textContent.indexOf('/'));
+    var oldUrl = item.getAttribute("href");
+    var newUrl = replaceSubstring(oldUrl, "IPADDRESS", "newBaseIpAddress");
+    item.setAttribute("href", newUrl);
   });
 }
 </script>
