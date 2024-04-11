@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List of URLs</title>
+</head>
+<body>
+
+<h1>Acceso al programa por streaming local</h1>
+
+<ul id="urlList">
+  <!-- Static list of URLs -->
+  <li>http://192.168.1.1/page1.html</li>
+  <li>http://192.168.1.1/page2.html</li>
+  <li>http://192.168.1.1/page3.html</li>
+  <li>http://192.168.1.1/page4.html</li>
+  <li>http://192.168.1.1/page5.html</li>
+</ul>
+
+<script>
+// Function to update the base IP address
+function updateBaseIpAddress() {
+  var newBaseIpAddress = "192.168.1.201"
+
+  var urlListItems = document.querySelectorAll("#urlList li");
+  urlListItems.forEach(function(item) {
+    item.textContent = "http://" + newBaseIpAddress + item.textContent.substr(item.textContent.indexOf('/'));
+  });
+}
+</script>
+
+</body>
+</html>
