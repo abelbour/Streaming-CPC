@@ -11,13 +11,48 @@
 
 <ul id="urlList">
   <!-- Static list of URLs -->
-  <li><a href="http://localhost:8888/mystream">HLS</a> (<a href="vlc://http://localhost:8888/mystream">abrir en VLC</a>)</li>
+  <li><a href="http://localhost:8888/mystream">HLS</a> (<a href="vlc://http://localhost:8888/mystream/index.m3u8">abrir en VLC</a>)</li>
   <li><a href="srt://localhost:8890?streamid=read:mystream">SRT</a> (<a href="vlc://srt://localhost:8890?streamid=read:mystream">abrir en VLC</a>)</li>
-  <li><a href="http://192.168.1.1/page3.html">Page 3</a></li>
-  <li><a href="http://192.168.1.1/page4.html">Page 4</a></li>
-  <li><a href="http://192.168.1.1/page5.html">Page 5</a></li>
+  <li><a href="http://localhost:8889/mystream">WebRTC</a></li>
+  <li><a href="http://localhost:8889/mystream/whep">WHEP</a></li>
+  <li><a href="rtsp://localhost:8554/mystream">RTSP</a> (<a href="vlc://rtsp://localhost:8554/mystream">abrir en VLC</a>)</li>
+  <li><a href="rtmp://localhost/mystream">RTMP</a> (<a href="vlc://rtmp://localhost/mystream">abrir en VLC</a>)</li>
+  <li><a href="rtsp://localhost:8554/mystream">RTSP</a> (<a href="vlc://rtsp://localhost:8554/mystream">abrir en VLC</a>)</li>
 </ul>
 
+  <div>
+  <p>
+    Codecs soportados
+  </p>
+  <table>
+    <tr>
+      <td>AV1</td>
+      <td id="av1"></td>
+    </tr>
+    <tr>
+      <td>VP9</td>
+      <td id="vp9"></td>
+    </tr>
+    <tr>
+      <td>H265</td>
+      <td id="h265"></td>
+    </tr>
+    <tr>
+      <td>H264</td>
+      <td id="h264"></td>
+    </tr>
+    <tr>
+      <td>Opus</td>
+      <td id="opus"></td>
+    </tr>
+    <tr>
+      <td>MPEG-4 Audio (AAC)</td>
+      <td id="aac"></td>
+    </tr>
+  </table>
+
+</div>
+  
 <script>
 // Function to update the base IP address
 function replaceSubstring(originalString, substringToFind, replacementSubstring) {
@@ -34,6 +69,14 @@ function updateBaseIpAddress() {
   });
 };
 updateBaseIpAddress();
+document.getElementById("av1").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="av01.0.08M.08.0.110.01.01.01.1"');
+document.getElementById("vp9").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="vp09.00.10.08"');
+document.getElementById("h265").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="hvc1.1.4.L120.B0"');
+document.getElementById("h264").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="avc1.42c028"');
+document.getElementById("opus").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="opus"');
+document.getElementById("aac").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="mp4a.40.2"');
+
+
 </script>
 
 </body>
