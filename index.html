@@ -29,7 +29,7 @@ function updateBaseIpAddress() {
   var urlListItems = document.querySelectorAll("#urlList li a");
   urlListItems.forEach(function(item) {
     var oldUrl = item.getAttribute("href");
-    var newUrl = replaceSubstring(oldUrl, "ipaddress", "newBaseIpAddress");
+    var newUrl = replaceSubstring(oldUrl, "ipaddress", newBaseIpAddress);
     item.setAttribute("href", newUrl);
   });
 };
