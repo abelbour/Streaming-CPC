@@ -22,7 +22,7 @@
 // Function to update the base IP address
 function replaceSubstring(originalString, substringToFind, replacementSubstring) {
   return originalString.split(substringToFind).join(replacementSubstring);
-}
+};
 function updateBaseIpAddress() {
   var newBaseIpAddress = "192.168.1.201"
 
@@ -32,7 +32,8 @@ function updateBaseIpAddress() {
     var newUrl = replaceSubstring(oldUrl, "ipaddress", "newBaseIpAddress");
     item.setAttribute("href", newUrl);
   });
-}
+};
+updateBaseIpAddress();
 </script>
 
 </body>
