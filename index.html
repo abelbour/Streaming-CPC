@@ -80,6 +80,8 @@ function processData(data) {
   console.log("Processing data:", data);
   // For example, assign it to a variable
   newBaseIpAddress = data;
+  updateBaseIpAddress();
+  
 }
 // Function to update the base IP address
 function replaceSubstring(originalString, substringToFind, replacementSubstring) {
@@ -87,7 +89,7 @@ function replaceSubstring(originalString, substringToFind, replacementSubstring)
 };
 
 function updateBaseIpAddress() {
-  loadData()
+
   
 
   var urlListItems = document.querySelectorAll("#urlList li a");
@@ -97,14 +99,14 @@ function updateBaseIpAddress() {
     item.setAttribute("href", newUrl);
   });
 };
-updateBaseIpAddress();
+
 document.getElementById("av1").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="av01.0.08M.08.0.110.01.01.01.1"');
 document.getElementById("vp9").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="vp09.00.10.08"');
 document.getElementById("h265").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="hvc1.1.4.L120.B0"');
 document.getElementById("h264").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="avc1.42c028"');
 document.getElementById("opus").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="opus"');
 document.getElementById("aac").innerHTML = MediaSource.isTypeSupported('video/mp4; codecs="mp4a.40.2"');
-
+loadData()
 
 </script>
 
